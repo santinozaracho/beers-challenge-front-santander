@@ -1,0 +1,1 @@
+export { useWeatherAPI} from './useWeatherAPI'
