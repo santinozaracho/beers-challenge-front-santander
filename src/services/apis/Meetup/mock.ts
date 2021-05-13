@@ -9,8 +9,12 @@ const mockedMeetups: [Meetup] = [
       city: "Buenos Aires",
       country: "Argentina",
       address: "Av. Libertador 5414",
+      coords: {
+        lat: -34.8589107,
+        lon: -58.5131388,
+      },
     },
-    invites: 4514,
+    guests: 4514,
     date: "2021-05-14",
     time: "19:00",
   },
@@ -26,7 +30,10 @@ export const mockedMainApi = {
   getOne: (id: number): Promise<SingleResponse> =>
     new Promise((resolve) => {
       setTimeout(() => {
-        resolve({ data: mockedMeetups.find((meetup) => meetup.id === id) });
+        const data = mockedMeetups.find(
+          (meetup) => Number(meetup.id) === Number(id)
+        );
+        resolve({ data });
       }, 1000);
     }),
 };

@@ -18,6 +18,7 @@ module.exports = override(
     "@api": path.resolve(__dirname, "src/api"),
     "@constants": path.resolve(__dirname, "src/constants"),
     "@services": path.resolve(__dirname, "src/services"),
+    "@stores": path.resolve(__dirname, "src/stores"),
   }),
   fixBabelImports("import", {
     libraryName: "antd",

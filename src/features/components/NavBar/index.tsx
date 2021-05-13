@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Image } from "antd";
+import { Col } from "antd";
 import { Link } from "react-router-dom";
 
 import { StyledButton, StyledCol, RowContainer, StyledRow } from "./components";
@@ -12,7 +12,7 @@ const NavBar: React.FC = () => {
     <RowContainer>
       <StyledRow justify="space-between" align="middle">
         <Col xs={9} sm={12} md={4}>
-          <Image src={LogoSantander} />
+          <img alt="logo" src={LogoSantander} />
         </Col>
         <StyledCol xs={9} sm={12} md={20}>
           <Link to="/registrarse">

@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import { PageNotFound } from "./components";
 import { Dashboard } from "./Dashboard";
 import { Profile } from "./Profile";
 
@@ -8,7 +9,7 @@ const Main: React.FC = () => {
     <Switch>
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/profile" component={Profile} />
-      <Route component={() => <h1>404 no encontrado</h1>} />
+      <Route component={PageNotFound} />
     </Switch>
   );
 };

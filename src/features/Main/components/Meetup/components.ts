@@ -6,5 +6,11 @@ export const StyledCol = styled(Col)`
 `;
 
 export const StyledCard = styled(Card)`
-  width: 200px;
+  margin: 20%;
+  margin-top: 5%;
+`;
+
+export const StyledDataCard = styled(Card)`
+  padding: 5%;
+  margin: 5%;
 `;
