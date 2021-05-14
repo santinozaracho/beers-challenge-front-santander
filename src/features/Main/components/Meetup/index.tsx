@@ -10,6 +10,7 @@ import {
   BoxPlotOutlined,
   CarryOutOutlined,
   EnvironmentOutlined,
+  HeartOutlined,
 } from "@ant-design/icons";
 import { StyledCard, StyledDataCard } from "./components";
 import Text from "antd/lib/typography/Text";
@@ -30,7 +31,6 @@ export const Meetup: React.FC = () => {
   const { data, isLoading } = useMeetupQuery({
     id: Number(routeParams.id),
   });
-  console.log(data);
 
   const { temp, packs, isLoading: isWeatherLoading } = useTempAndBeersQuery({
     date: data?.date,
@@ -105,7 +105,6 @@ export const Meetup: React.FC = () => {
                           prefix={<BoxPlotOutlined />}
                           loading={isWeatherLoading}
                         />
-                        s
                       </Col>
                     </StyledDataCard>
                   )}
@@ -114,7 +113,7 @@ export const Meetup: React.FC = () => {
                       <Statistic
                         title={t("meetup.temp")}
                         value={temp}
-                        prefix={<UserOutlined />}
+                        prefix={<HeartOutlined />}
                         loading={isWeatherLoading}
                       />
                     </Col>

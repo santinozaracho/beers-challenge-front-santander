@@ -1,16 +1,18 @@
-//import { weatherApi } from "@api";
+import { weatherApi } from "@api";
 import { DEFAULT_COORDS } from "@constants";
-import { weatherMockApi } from "./mock";
+//import { weatherMockApi } from "./mock";
+
+// Annotation: these lines are commented for mock apiResponses
 
 const getByCoords = async ({
   lat = DEFAULT_COORDS.lat,
   lon = DEFAULT_COORDS.lon,
 } = {}) => {
-  // const response = await weatherApi.get(
-  //   `/forecast/daily?lat=${lat}&lon=${lon}`
-  // );
+  const response = await weatherApi.get(
+    `/forecast/daily?lat=${lat}&lon=${lon}`
+  );
 
-  const response = await weatherMockApi.get();
+  // const response = await weatherMockApi.get();
 
   return response?.data;
 };
