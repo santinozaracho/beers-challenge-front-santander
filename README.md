@@ -1,5 +1,20 @@
 # beers-challenge-front-santander
+
 Challenge resolution for SantanderRio.
+
+# context
+
+MainAPI: sera la encagargada de proveer toda la informacion referida a los Meetups, datos de usuario, quizas login.
+
+WeatherAPI: es la API de weatherbit que nos provee el pronostico del clima de aqui a 15 dias, por lo que para poder acceder a informacion referida al clima y la cantidad de packs de birras, debemos estar dentro de dicha fecha, es
+decir, 15 dias antes de la fecha del evento.
+
+Se encuentra el travis.yml, pero faltaria el script de deploy
+
+Tampoco pude alcanzar el tiempo con los tests.
+
+Quiza, el tiempo (para resolver aspectos de testing, CI/CD) se ve muy influenciado por la dificultad de tener que
+pensar en el diseño, en la UI, que queda mejor, y que no.
 
 ## Development
 
