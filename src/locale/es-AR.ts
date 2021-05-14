@@ -1,10 +1,14 @@
 export const translations = {
   common: {
-    welcome: "Bienvenido",
+    welcome: "Bienvenido!, como deseas ingresar?.",
     meetups: "Encuentros",
     user: "Usuario",
     admin: "Administrador",
     signup: "Registrarse",
+  },
+  users: {
+    ADMIN: "Administrador",
+    USER: "Usuario",
   },
   meetup: {
     date: "Fecha",

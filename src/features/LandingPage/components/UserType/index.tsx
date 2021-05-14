@@ -1,58 +1,51 @@
 import React from "react";
-import { Card, Col, Row } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Col, Row } from "antd";
 
-import { RowContainer } from "./components";
+import { RowContainer, StyledCard, StyledUser } from "./components";
 import Meta from "antd/lib/card/Meta";
 import { useHistory } from "react-router";
 import Title from "antd/lib/typography/Title";
 import { useUserContext } from "@stores";
 import { ROUTES, USER_TYPES } from "@constants";
+import { useTranslation } from "react-i18next";
 
-const userTypes = [
+const users = [
   {
-    name: "Admin",
     type: USER_TYPES.ADMIN,
     route: `/${ROUTES.DASHBOARD}`,
   },
   {
-    name: "Usuario",
     type: USER_TYPES.USER,
     route: `/${ROUTES.PROFILE}`,
   },
 ];
 
 export const UserType: React.FC = () => {
+  const { t } = useTranslation();
   const { changeUser } = useUserContext();
   const { push } = useHistory();
 
-  const onSelectUser = (type: string, route: string) => {
+  const onSelectUser = (type: string) => {
     changeUser(type);
-    push(route);
+    push(`${ROUTES.AUTH}`);
   };
   return (
     <RowContainer justify="center">
       <Col>
         <Row justify="center">
-          <Title level={2}>Bienvenido!, como deseas ingresar?.</Title>
+          <Title level={2}>{t("common.welcome")}</Title>
         </Row>
         <Row justify="space-between">
-          {userTypes.map(({ name, type, route }) => (
-            <Card
+          {users.map(({ type, route }) => (
+            <StyledCard
               hoverable
-              style={{ width: 200 }}
-              onClick={() => onSelectUser(type, route)}
-              cover={
-                <UserOutlined
-                  color="#737373"
-                  style={{ marginTop: "16px", fontSize: "64px" }}
-                />
-              }
+              onClick={() => onSelectUser(type)}
+              cover={<StyledUser color="#737373" />}
             >
               <Row justify="center">
-                <Meta title={name} />
+                <Meta title={t(`users.${type}`)} />
               </Row>
-            </Card>
+            </StyledCard>
           ))}
         </Row>
       </Col>

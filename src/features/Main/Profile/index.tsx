@@ -12,7 +12,7 @@ export const Profile: React.FC = () => {
     <Switch>
       <Route
         exact
-        path=""
+        path="/"
         component={() => <Options onSelect={onSelectOption} />}
       />
       <MeetupsRoutes baseUrl="/profile" />

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Col, Result, Row, Skeleton, Statistic, Switch } from "antd";
+import React from "react";
+import { Col, Row, Skeleton, Statistic, Switch } from "antd";
 
 import Title from "antd/lib/typography/Title";
 import { useMeetupQuery, useTempAndBeersQuery } from "./hooks";

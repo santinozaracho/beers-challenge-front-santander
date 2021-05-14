@@ -10,6 +10,12 @@ const onError = () => {
   });
 };
 
+const redirectRoutes = {
+  [USER_TYPES.ADMIN]: `/${ROUTES.DASHBOARD}`,
+  [USER_TYPES.USER]: `/${ROUTES.PROFILE}`,
+  [USER_TYPES.VISITOR]: "/",
+};
+
 const useAuth = () => {
   const { pathname } = useLocation();
   const { push } = useHistory();
@@ -21,6 +27,12 @@ const useAuth = () => {
   };
 
   if (!user) onReAuth();
+
+  if (pathname.includes(ROUTES.AUTH)) {
+    setTimeout(() => {
+      push(redirectRoutes[user ?? USER_TYPES.VISITOR]);
+    }, [1000]);
+  }
 
   if (pathname.includes(ROUTES.DASHBOARD) && user !== USER_TYPES.ADMIN)
     onReAuth();

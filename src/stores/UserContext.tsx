@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  ReactElement,
-  useContext,
-  useState,
-} from "react";
+import React, { createContext, useContext, useState } from "react";
 
 /**
  * @description User Context is responsible for Inject the User Query as provider for use as a Hook in all App Context.
@@ -22,7 +17,7 @@ export const UserContext = createContext<UserCtx>({
 
 UserContext.displayName = "UserContext";
 
-export const UserProvider: React.FC<ReactElement> = ({ children }) => {
+export const UserProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<string | null>(null);
 
   const changeUser = (user: string) => setUser(user);

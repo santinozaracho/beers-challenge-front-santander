@@ -11,6 +11,7 @@ export const TEMP_TYPES = {
 export const USER_TYPES = {
   ADMIN: "ADMIN",
   USER: "USER",
+  VISITOR: "VISITOR",
 };
 export const BEER_QUANTITY_BY_PACK = 6;
 
