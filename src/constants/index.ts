@@ -1,11 +1,17 @@
 export { ERROR_MESSAGES } from "./errors";
 
+export { ROUTES } from "./routes";
+
 export const TEMP_TYPES = {
   COLD: "COLD",
   HOT: "HOT",
   NORMAL: "NORMAL",
 };
 
+export const USER_TYPES = {
+  ADMIN: "ADMIN",
+  USER: "USER",
+};
 export const BEER_QUANTITY_BY_PACK = 6;
 
 export const WEATHER_FORECAST_DAYS = 15;

@@ -1,12 +1,21 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
-import { PageNotFound } from "../components";
-import { MyMeetups } from "./MyMeetups";
+import { Switch, Route, useHistory } from "react-router-dom";
+import { Options, PageNotFound } from "../components";
+import { MeetupsRoutes } from "../routes";
 
 export const Profile: React.FC = () => {
+  const { push } = useHistory();
+  const onSelectOption = (route: string) => {
+    push(`/profile/${route}`);
+  };
   return (
     <Switch>
-      <Route path="/myMeetups" exact component={MyMeetups} />
+      <Route
+        exact
+        path=""
+        component={() => <Options onSelect={onSelectOption} />}
+      />
+      <MeetupsRoutes baseUrl="/profile" />
       <Route component={PageNotFound} />
     </Switch>
   );

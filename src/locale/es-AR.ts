@@ -6,6 +6,15 @@ export const translations = {
     admin: "Administrador",
     signup: "Registrarse",
   },
+  meetup: {
+    date: "Fecha",
+    guests: "Personas",
+    beers: "Birras",
+    timeleft: "Falta solo",
+    location: "Ubicacion",
+    temp: "Temperatura",
+    enableNotifications: "Deseo recibir notificaciones",
+  },
   errors: {
     generic: "Ocurrió un error. Intentalo de nuevo",
   },

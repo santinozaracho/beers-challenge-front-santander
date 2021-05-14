@@ -11,6 +11,5 @@ export const StyledCard = styled(Card)`
 `;
 
 export const StyledDataCard = styled(Card)`
-  padding: 5%;
   margin: 5%;
 `;

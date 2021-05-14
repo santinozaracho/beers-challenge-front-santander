@@ -15,12 +15,15 @@ import { StyledCard, StyledDataCard } from "./components";
 import Text from "antd/lib/typography/Text";
 import Countdown from "antd/lib/statistic/Countdown";
 import { PageNotFound } from "../PageNotFound";
+import { Utils } from "@services";
+import { useUserContext } from "@stores";
 
 interface Params {
   id: string;
 }
 
 export const Meetup: React.FC = () => {
+  const { user } = useUserContext();
   const routeParams = useParams<Params>();
   console.log(Number(routeParams.id));
 
@@ -47,6 +50,7 @@ export const Meetup: React.FC = () => {
   if (data) {
     const { title, guests, date, location } = data;
 
+    const isAdmin = user === "ADMIN";
     return (
       <StyledCard>
         <Row justify="center">
@@ -67,7 +71,7 @@ export const Meetup: React.FC = () => {
                       value={date}
                       prefix={<CarryOutOutlined />}
                     />
-                    <Countdown title={t("meeetup.timeleft")} value={date} />
+                    <Countdown title={t("meetup.timeleft")} value={date} />
                   </Col>
                   <Col>
                     <Statistic
@@ -80,32 +84,32 @@ export const Meetup: React.FC = () => {
               </StyledDataCard>
             </Row>
             <Row justify="center">
-              <Col span={6}>
-                <StyledDataCard>
-                  <Row gutter={32} justify="center">
-                    <Statistic
-                      title={t("meetup.guests")}
-                      value={guests}
-                      prefix={<UserOutlined />}
-                    />
-                  </Row>
-                </StyledDataCard>
-              </Col>
-              <Col span={18}>
-                <StyledDataCard>
-                  <Text>
-                    Informacion del clima y cantidad de cervezas solo 15 dias
-                    antes
-                  </Text>
-                  <Row gutter={32} justify="center">
-                    <Col>
-                      <Statistic
-                        title={t("meetup.beers")}
-                        value={packs}
-                        prefix={<BoxPlotOutlined />}
-                        loading={isWeatherLoading}
-                      />
-                    </Col>
+              <StyledDataCard>
+                <Col>
+                  <Statistic
+                    title={t("meetup.guests")}
+                    value={guests}
+                    prefix={<UserOutlined />}
+                  />
+                </Col>
+              </StyledDataCard>
+
+              {Utils.isForecastAvailable(date) ? (
+                <>
+                  {isAdmin && (
+                    <StyledDataCard>
+                      <Col>
+                        <Statistic
+                          title={t("meetup.beers")}
+                          value={packs}
+                          prefix={<BoxPlotOutlined />}
+                          loading={isWeatherLoading}
+                        />
+                        s
+                      </Col>
+                    </StyledDataCard>
+                  )}
+                  <StyledDataCard>
                     <Col>
                       <Statistic
                         title={t("meetup.temp")}
@@ -114,9 +118,14 @@ export const Meetup: React.FC = () => {
                         loading={isWeatherLoading}
                       />
                     </Col>
-                  </Row>
-                </StyledDataCard>
-              </Col>
+                  </StyledDataCard>
+                </>
+              ) : (
+                <Text>
+                  Informacion del clima y cantidad de cervezas solo 15 dias
+                  antes
+                </Text>
+              )}
             </Row>
           </Col>
         </Row>

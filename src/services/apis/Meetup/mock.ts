@@ -34,6 +34,6 @@ export const mockedMainApi = {
           (meetup) => Number(meetup.id) === Number(id)
         );
         resolve({ data });
-      }, 1000);
+      }, 4000);
     }),
 };

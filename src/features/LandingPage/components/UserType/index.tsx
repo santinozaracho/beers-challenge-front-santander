@@ -7,17 +7,18 @@ import Meta from "antd/lib/card/Meta";
 import { useHistory } from "react-router";
 import Title from "antd/lib/typography/Title";
 import { useUserContext } from "@stores";
+import { ROUTES, USER_TYPES } from "@constants";
 
 const userTypes = [
   {
     name: "Admin",
-    type: "ADMIN",
-    route: "/dashboard/meetups",
+    type: USER_TYPES.ADMIN,
+    route: `/${ROUTES.DASHBOARD}`,
   },
   {
     name: "Usuario",
-    type: "USER",
-    route: "/profile/myMeetups",
+    type: USER_TYPES.USER,
+    route: `/${ROUTES.PROFILE}`,
   },
 ];
 

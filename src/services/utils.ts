@@ -1,4 +1,4 @@
-import { BEER_QUANTITY_BY_PACK } from "@constants";
+import { BEER_QUANTITY_BY_PACK, WEATHER_FORECAST_DAYS } from "@constants";
 import { Forecast } from "@types";
 
 export const TEMP_TYPES = {
@@ -33,7 +33,20 @@ const getTempByDateFromForecasts = (date: string, forecasts: [Forecast]) => {
   return forecastInDate?.temp ?? 0;
 };
 
+const isForecastAvailable = (date: string) => {
+  const dateToday = new Date();
+  console.log(dateToday);
+
+  const eventDate = new Date(date);
+  console.log(eventDate);
+
+  const daysLeft =
+    (eventDate.getTime() - dateToday.getTime()) / (1000 * 3600 * 24);
+
+  return daysLeft < WEATHER_FORECAST_DAYS;
+};
 export const Utils = {
   getBeersQuantity,
   getTempByDateFromForecasts,
+  isForecastAvailable,
 };
