@@ -1,0 +1,21 @@
+env: BRANCH=$(echo $TRAVIS_BRANCH)
+
+language: node_js
+node_js: 12
+dist: trusty
+
+jobs:
+  include:
+    - stage: Lint and Unit tests
+      os: linux
+      language: node_js
+      script:
+        - npm run lint
+        - npm run test
+
+    - stage: Publish
+      if: branch in (master, develop) AND type NOT IN (pull_request)
+      os: linux
+      language: node_js
+      script:
+        - npm run deploy
